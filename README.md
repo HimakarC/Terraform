@@ -21,21 +21,22 @@ To use the terraform, you need to configure your aws account using **Access Key 
 After installing Terraform: <br>
 
 --> Create a file with **.tf** extension. <br>
---> Now write the script that is commands to create **EC2, Virtual Network, etc...**  <br>
+--> Now write the script i.e commands to create **EC2, Virtual Network, etc...**  <br>
 --> Use the command **terraform init** to preapre the working file where scripting is written.  <br>
 
 
 #Script:  <br>
 
-provider "aws" {
+provider "aws" <br> {
   profile    = "default"
   region     = "us-east-1"
-}
+}  <br>
 
 resource "aws_instance" "example" {
   ami           = "ami-2757f631"
   instance_type = "t2.micro"
 }  <br>
 
+--> Now use the command **terraform plan** to plan the changes to the aws account.  <br>
 
---> Now use the command **terraform apply** to perform the operation written in script.
+--> Now finally use the command **terraform apply** to perform the operation written in script.
