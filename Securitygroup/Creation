@@ -1,31 +1,31 @@
-provider "aws" {  <br>
-region="us-east-1"<br>
-profile="default"<br>
-}  <br>
+provider "aws" {
+region="us-east-
+profile="defaul
+}
 
-resource "aws_security_group" "himakar" {  <br>
-  name        = "himakar"  <br>
-  description = "This-is-first-security-group"  <br>
-  vpc_id      = "You should give your EC2 instance VPCID"  <br>
+resource "aws_security_group" "himakar" {
+  name        = "himakar"
+  description = "This-is-first-security-group"
+  vpc_id      = "You should give your EC2 instance VPCID"
 
-  ingress {  <br>
-    description      = "Nothing"  <br>
-    from_port        = 0  <br>
-    to_port          = 0  <br>
-    protocol         = "all"  <br>
-    cidr_blocks      = ["0.0.0.0/0"]  <br>
-    ipv6_cidr_blocks = ["::/16"]  <br>
-  }  <br>
+  ingress {
+    description      = "Nothing"
+    from_port        = 0
+    to_port          = 0
+    protocol         = "all"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/16"]
+  }
 
-  egress {  <br>
-    from_port        = 0  <br>
-    to_port          = 0  <br>
-    protocol         = "-1"  <br>
-    cidr_blocks      = ["0.0.0.0/0"]  <br>
-    ipv6_cidr_blocks = ["::/16"]  <br>
-  }  <br>
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/16"]
+  }
 
-  tags = {  <br>
-    Name = "himakar"  <br>
-  }  <br>
+  tags = {
+    Name = "himakar"
+  }
 }
