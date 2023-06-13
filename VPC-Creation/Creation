@@ -1,0 +1,24 @@
+provider "aws" {
+        access_key = "XXXXXXXXXXXXXX"
+        secret_key= "XXXXXXXXXXXXXXXXXXXXXXX"
+        region = "us-east-1"
+}
+
+resource "aws_vpc" "terraform" {
+        cidr_block = "10.0.0.0/18"
+        tags = {
+                Name = "him"
+        }
+}
+
+resource "aws_subnet" "him1" {
+        vpc_id = aws_vpc.terraform.id
+        cidr_block = "10.0.0.0/20"
+
+        tags = {
+                name = "himakar"
+        }
+}
+
+
+#You can create more than one subnet too
