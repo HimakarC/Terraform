@@ -1,0 +1,18 @@
+provider "aws" {
+        profile = "default"
+        region = "us-east-1"
+}
+
+resource "aws_ebs_volume" "HelloWorld" {
+        availability_zone = "us-east-1a"
+        size = 45
+        tags = { name = "himakar" }
+}
+
+resource "aws_volume_attachment" "something" {
+        device_name = "/dev/sda1"
+        volume_id = "${aws_ebs_volume.HelloWorld.id}"
+        instance_id = "XXXXXXXXXXXXXX"
+}
+
+**The EC2 Instance and the EBS Volume should be in same availability zone to attach.**
