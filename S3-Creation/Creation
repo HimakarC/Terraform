@@ -1,0 +1,16 @@
+provider "aws" {
+  profile = "default"
+  region = "us-east-1"
+}
+
+resource "aws_s3_bucket" "himakar" {
+  bucket = "himakar"
+}
+
+resource "aws_s3_bucket_accelerate_configuration" "dontknow" {
+  bucket = aws_s3_bucket.himakar.id
+  status = "Suspended"
+}
+
+
+#AWS Accelerate Configuration is for faster, easy and secure transfers of files to the client over long distances from S3 bucket.
