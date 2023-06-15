@@ -8,10 +8,10 @@ resource "aws_s3_bucket" "himakar" {
 
 resource "aws_s3_bucket_accelerate_configuration" "dontknow" {
   bucket = aws_s3_bucket.himakar.id
-  status = "Suspended"
+  status = "Enabled"
 }
 
-resource "aws_s3_bucket_public_access_block" "example" {
+resource "aws_s3_bucket_public_access_block" "himakar" {
   bucket = aws_s3_bucket.himakar.id
   block_public_acls       = false
   block_public_policy     = false
@@ -19,14 +19,14 @@ resource "aws_s3_bucket_public_access_block" "example" {
   restrict_public_buckets = false
 }
 
-resource "aws_s3_bucket_acl" "example" {
+resource "aws_s3_bucket_acl" "himakar" {
   depends_on = [
-    aws_s3_bucket_ownership_controls.example,
-    aws_s3_bucket_public_access_block.example,
+    aws_s3_bucket_ownership_controls.himakar,
+    aws_s3_bucket_public_access_block.himakar,
   ]
-  bucket = aws_s3_bucket.example.id
+  bucket = aws_s3_bucket.himakar.id
   acl    = "public-read"    # You can also change to private by enabling all access blocks to true in aws_s3_bucket_public_access_block.
 }
 
 # AWS S3 ACL(Access Control Lists) enable you to manage access to objects and buckets.
-# You can have little access to bucket and much little access to objects in bucket.
+# You can have little access to bucket and much little access to objects in the bucket.
