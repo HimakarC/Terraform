@@ -10,7 +10,12 @@ resource "aws_s3_bucket_accelerate_configuration" "dontknow" {
   bucket = aws_s3_bucket.himakar.id
   status = "Enabled"
 }
-
+resource "aws_s3_bucket_ownership_controls" "himakar" {
+  bucket = aws_s3_bucket.himakar.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
 resource "aws_s3_bucket_public_access_block" "himakar" {
   bucket = aws_s3_bucket.himakar.id
   block_public_acls       = false
