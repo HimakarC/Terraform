@@ -1,0 +1,17 @@
+resource "aws_iam_group_membership" "team" {
+  name = "legendsleague"
+  users = [
+    aws_iam_user.himakar.name,
+  ]
+  group = aws_iam_group.legends.name
+}
+
+resource "aws_iam_group" "legends" {
+  name = "legends"
+}
+
+resource "aws_iam_user" "himakar" {
+  name = "himakar"
+}
+
+# This creates a group consisting of IAM users. In this case himakar is the IAM user.
