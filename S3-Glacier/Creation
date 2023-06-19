@@ -1,0 +1,12 @@
+provider "aws" {
+        profile = "default"
+        region = "us-east-1"
+}
+
+resource "aws_glacier_vault" "himakar" {
+  name = "himakar"
+
+  tags = {
+    "VaultPurpose" = "Archive"
+  }
+}
