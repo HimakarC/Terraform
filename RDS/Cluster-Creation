@@ -1,0 +1,13 @@
+resource "aws_rds_cluster" "himakar" {
+  cluster_identifier        = "himakar"
+  availability_zones        = ["us-west-2a", "us-west-2b", "us-west-2c"]
+  engine                    = "mysql"
+  db_cluster_instance_class = "db.r6gd.xlarge"
+  storage_type              = "io1"
+  allocated_storage         = 100
+  iops                      = 1000
+  master_username           = "root"
+  master_password           = "XXXXXXX"
+}
+
+# The AZ's can be changed depending on the availability.
