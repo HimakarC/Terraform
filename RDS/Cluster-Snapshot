@@ -1,0 +1,6 @@
+resource "aws_db_cluster_snapshot" "rdscluster_name" {
+  db_cluster_identifier          = aws_rds_cluster.rdscluster_name.id
+  db_cluster_snapshot_identifier = "anything"
+}
+
+# This is to be written while creating the RDS cluster.
