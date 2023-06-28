@@ -23,3 +23,5 @@ resource "aws_sqs_queue" "my_dlq" {
         name = "himakar.fifo"
         fifo_queue = true
 }
+
+# The type of queues must be same
