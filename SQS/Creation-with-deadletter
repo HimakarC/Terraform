@@ -1,0 +1,22 @@
+provider "aws" {
+  profile = "default"
+  region = "us-east-1"
+}
+
+resource "aws_sqs_queue" "my_queue" {
+  name                      = "my-queue"
+  delay_seconds             = 0
+  max_message_size          = 262144
+  message_retention_seconds = 345600
+
+  redrive_policy = jsonencode({
+    deadLetterTargetArn = aws_sqs_queue.my_dlq.arn
+    maxReceiveCount     = 4
+  })
+}
+
+resource "aws_sqs_queue" "my_dlq" {
+  name = "my-queue-dlq"
+}
+
+# Two queues are created where one queue is for deadletter and another is normal queue.
