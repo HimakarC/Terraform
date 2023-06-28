@@ -1,0 +1,25 @@
+provider "aws" {
+profile = "default"
+region = "us-east-1"
+}
+
+# This is the main queue
+
+resource "aws_sqs_queue" "terraform_queue" {
+  name                        = "terraform-example-queue.fifo"
+  fifo_queue                  = true
+  content_based_deduplication = true
+  delay_seconds             = 0
+  max_message_size          = 262144
+  message_retention_seconds = 345600
+
+  redrive_policy = jsonencode({
+    deadLetterTargetArn = aws_sqs_queue.my_dlq.arn
+    maxReceiveCount     = 4
+  })
+}
+
+resource "aws_sqs_queue" "my_dlq" {
+        name = "himakar.fifo"
+        fifo_queue = true
+}
